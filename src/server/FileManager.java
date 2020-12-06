@@ -30,6 +30,8 @@ public class FileManager {
     BufferedReader bf;
     PrintWriter pw;
     String string;
+    
+    private String USER_FILE = "\\users.txt";
 
     public FileManager() {
         System.out.println("paso");
@@ -38,7 +40,7 @@ public class FileManager {
 
     //GUARDAAAR 
     public boolean saveUserPassword(String user, String password) {
-        String saveUser = "C:\\Users\\ClaraU\\Documents" + "\\users.txt";
+        String saveUser = "C:\\Users\\ClaraU\\Documents" + USER_FILE;
         System.out.println(saveUser);
         dir = new File(saveUser);
         if (!dir.exists()) {
@@ -92,8 +94,9 @@ public class FileManager {
         return true;
     }
 
-    public void SaveChangingVariables(int flex_ang, int turn_ang, ArrayList<Integer> bitalino) {
-        String saveChangingVar = "C:\\Users\\ClaraU\\Documents" + "\\saveChanging.txt";
+    public boolean saveChangingVariables(String userName,String flex_ang, String turn_ang, List<String> bitalino) {
+        // TODO Crear directorio con nombre del paciente
+        String saveChangingVar = "C:\\Users\\ClaraU\\Documents" + "\\" + userName + ".txt";
         System.out.println(saveChangingVar);
         dir = new File(saveChangingVar);
         if (!dir.exists()) {
@@ -101,6 +104,7 @@ public class FileManager {
                 dir.createNewFile(); //Create a new file
             } catch (IOException ex) {
                 Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
         try {
@@ -108,25 +112,31 @@ public class FileManager {
 
             pw.append(flex_ang + "\n");
             pw.append(turn_ang + "\n");
-            pw.append(bitalino + "\n");
+            pw.append(bitalino.size()+ "\n");
+            
+            for(String data: bitalino) {
+                pw.append(data + "\n");
+            }
+            
             pw.append("\n");
             pw.close();
 
         } catch (Exception ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-
+        return true;
     }
 
     //CARGAAR
     public List[] getUserPassword() {
         try {
-            String user = "C:\\Users\\ClaraU\\Documents" + "\\saveUser.txt";
+            String user = "C:\\Users\\ClaraU\\Documents" + USER_FILE;
             //Read from the user and password file
             bf = new BufferedReader(new InputStreamReader(new FileInputStream(user)));
             List<String> userNames = new ArrayList<String>();
             List<String> passwords = new ArrayList<String>();
-            java.lang.String read; //Class represents character constant strings. Values cannot be changed after create them.
+            String read; //Class represents character constant strings. Values cannot be changed after create them.
             int counter = 0;
             //While I have info, I continue reading 
             while ((read = bf.readLine()) != null) {

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package server;
 
 import java.io.*;
@@ -15,7 +11,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +34,6 @@ public class FileManager {
     private String USER_FILE = "\\users.txt";
 
     public FileManager() {
-        System.out.println("paso");
         string = "C:\\Users\\ClaraU\\Documents";//System.getProperty("user.dir"); //Folder used for all the files
     }
 
@@ -110,6 +109,7 @@ public class FileManager {
         try {
             pw = new PrintWriter(new FileWriter(dir, true));
 
+            pw.append(todaysDate() + "\n");
             pw.append(flex_ang + "\n");
             pw.append(turn_ang + "\n");
             pw.append(bitalino.size()+ "\n");
@@ -160,6 +160,14 @@ public class FileManager {
         }
     }
 
+    private String todaysDate() {        
+        Date date = new Date();
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String formattedDate = formatter.format(date);
+        return formattedDate;
+    }
+    
+    /*
     public List[] getFixedVariables() {
         try {
             String saveFixedVar = "C:\\Users\\ClaraU\\Documents" + "\\saveFixed.txt";
@@ -221,4 +229,5 @@ public class FileManager {
             return null;
         }
     }
+*/
 }

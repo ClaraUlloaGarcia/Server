@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package server;
 
 import java.util.Arrays;
@@ -13,7 +9,7 @@ import java.util.Arrays;
  */
 public class SequenceManager {
     
-    private char EXPECTED_SEQUENCE[] = new char[] {50, 40, 30};
+    private char EXPECTED_SEQUENCE[] = new char[] {31, 18, 30};
 
     private char sequence[] = new char[3];
     

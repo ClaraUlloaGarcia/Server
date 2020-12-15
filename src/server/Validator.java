@@ -38,6 +38,10 @@ public class Validator {
         //2. Is there an existing user with the same name? 
         FileManager fileManager = new FileManager();
         List[] credentials = fileManager.getUserPassword();
+        if(credentials == null) {
+            return true;
+        }
+        
         if(credentials.length == 0) {
             return true;
         }

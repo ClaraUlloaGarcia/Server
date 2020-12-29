@@ -7,3 +7,12 @@ reduardo
 pedro
 12345
 
+clara
+12345
+
+pepe
+123456
+
+ana
+1234
+

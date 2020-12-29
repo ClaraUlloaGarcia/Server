@@ -36,13 +36,9 @@ public class Server {
                         serverProcess.start();
                       
                     }
-                    
-                   
-                   
                 } catch (IOException ex) { }
                 finally {
-                
-                 releaseResourcesServer();
+                    releaseResourcesServer();
                 }
             }
         });
@@ -51,7 +47,6 @@ public class Server {
     
     public void shutdownServer () {
         try {
-  
             shutdown = true;
             if(!serverSocket.isClosed()){
                     serverSocket.close();
@@ -69,8 +64,7 @@ public class Server {
         try {
             serverSocket.close();
         } catch (IOException ex) {
-            Logger.getLogger(Server.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -243,9 +243,11 @@ public class ServerProcess extends Thread {
         }
         String sizeString = readLine();
         int size = Integer.parseInt(sizeString);
+        System.out.println("Recibo una linea con " + size + " elementos");
         List<String> bitalinoData = new ArrayList(); //Lista de strings
         for (int i = 0; i < size; i++) {
             String line = readLine();
+            System.out.println("Dato recibido desde el amigo cliente " + line);
             bitalinoData.add(line);//lee linea y añade a la lista
         }
         String flex_ang = readLine();

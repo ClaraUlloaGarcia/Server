@@ -16,3 +16,21 @@ male
 80.0
 1.5
 
+clara
+female
+21
+60.0
+1.65
+
+pepe
+male
+30
+70.0
+1.76
+
+ana
+female
+23
+65.0
+1.73
+
